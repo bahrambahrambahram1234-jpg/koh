@@ -2488,7 +2488,6 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
             <div class="configs-title">کانفیگ‌ها</div>
             <div class="configs-count" id="configs-count">0 configs</div>
         </div>
-        <button class="ping-btn" id="ping-all-btn" onclick="pingAll()">⚡ تست پینگ همه</button>
         <div id="config-list"></div>
     </div>
 
@@ -2690,7 +2689,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
                     <div class="config-icon">🌐</div>
                     <div class="config-info">
                         <div class="config-name">${{remark}}</div>
-                        <div class="config-type">${{configBadge(cfg)}} <span class="ping-badge" id="ping-badge-${{i}}">-</span></div>
+                        <div class="config-type">${{configBadge(cfg)}}</div>
                     </div>
                     <div class="config-actions">
                         <button class="btn-copy" onclick="copyConfig('${{cfg.replace(/'/g,"\\'")}}')" title="Copy">کپی</button>
