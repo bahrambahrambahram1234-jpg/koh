@@ -2096,10 +2096,10 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
 
     secs_left = seconds_until_expiry(expires_at_str)
     if secs_left is None:
-        expiry_str = "Unlimited"
+        expiry_str = "بی‌نهایت"
         expiry_days = None
     elif secs_left == 0:
-        expiry_str = "Expired"
+        expiry_str = "منقضی شده"
         expiry_days = 0
     else:
         days = secs_left // 86400
@@ -2123,7 +2123,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
     configs_json = json.dumps(configs)
 
     is_active = link["active"]
-    status_text = "Active" if is_active else "Inactive"
+    status_text = "فعال" if is_active else "غیرفعال"
     
     # Color based on usage percentage
     if pct >= 90:
@@ -2438,11 +2438,11 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
 
         <div class="info-row">
             <div class="info-box">
-                <div class="info-box-label">Status</div>
+                <div class="info-box-label">وضعیت</div>
                 <div class="info-box-val {'green' if is_active else 'red'}">{status_text}</div>
             </div>
             <div class="info-box">
-                <div class="info-box-label">Expires</div>
+                <div class="info-box-label">انقضا</div>
                 <div class="info-box-val gold">{expiry_str}</div>
                 <div class="info-box-sub">{expiry_date_str}</div>
             </div>
