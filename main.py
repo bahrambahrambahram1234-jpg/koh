@@ -2319,10 +2319,18 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
         /* App cards */
 .apps-grid{{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;animation:pgIn .3s ease}}
 .apps-grid.show{{display:grid}}
-        .app-card{{background:var(--surface2);border:1px solid var(--border);border-radius:14px;
-            padding:14px;cursor:pointer;transition:all .2s;text-decoration:none;display:block}}
-        .app-card:hover{{border-color:var(--border2);background:rgba(13,22,38,0.98);
-            box-shadow:0 0 16px rgba(59,130,246,0.1);transform:translateY(-2px)}}
+    .app-card{{background:var(--surface2);border:1px solid var(--border);border-radius:14px;
+        padding:14px;transition:all .2s;display:flex;flex-direction:column;gap:10px}}
+    .app-card:hover{{border-color:var(--border2);background:rgba(13,22,38,0.98);
+        box-shadow:0 0 16px rgba(59,130,246,0.1);transform:translateY(-2px)}}
+    .app-card-head{{display:flex;align-items:center;gap:10px;cursor:pointer}}
+    .app-card-actions{{display:flex;gap:6px}}
+    .app-btn{{flex:1;padding:8px 10px;border-radius:8px;font-size:11px;font-weight:700;
+        text-align:center;text-decoration:none;cursor:pointer;border:none;font-family:inherit;transition:all .2s}}
+    .app-btn-dl{{background:var(--gold-dim);color:var(--gold);border:1px solid var(--border)}}
+    .app-btn-dl:hover{{background:rgba(59,130,246,0.2)}}
+    .app-btn-connect{{background:var(--green-dim);color:var(--green);border:1px solid rgba(74,222,128,0.2)}}
+    .app-btn-connect:hover{{background:rgba(74,222,128,0.2)}}
         .app-icon{{width:36px;height:36px;border-radius:8px;margin-bottom:8px;
             display:flex;align-items:center;justify-content:center;font-size:20px}}
         .app-name{{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}}
@@ -2538,24 +2546,20 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
 
     const APPS = {{
         Android: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-            {{name:"v2rayNG", color:"#16A34A", action:"Tap to open", url:"v2rayng://install-sub?url=" + encodeURIComponent(subUrl)}},
-            {{name:"V2Box", color:"#F97316", action:"Tap to open", url:"v2box://install-sub?url=" + encodeURIComponent(subUrl)}},
-            {{name:"Happ", color:"#7C3AED", action:"Tap to open", url:"happ://add/" + encodeURIComponent(subUrl)}},
-            {{name:"NPV Tunnel", color:"#475569", action:"Tap to copy link", url:null}},
-            {{name:"clash mi", color:"#DC2626", action:"Tap to open", url:"clash://install-config?url=" + encodeURIComponent(subUrl), fallbackUrl:"clashmeta://install-config?url=" + encodeURIComponent(subUrl)}},
+            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl, downloadUrl:"https://play.google.com/store/apps/details?id=app.hiddify.com"}},
+            {{name:"v2rayNG", color:"#16A34A", action:"Tap to open", url:"v2rayng://install-sub?url=" + encodeURIComponent(subUrl), downloadUrl:"https://github.com/2dust/v2rayNG/releases/download/2.2.6/v2rayNG_2.2.6-fdroid_arm64-v8a.apk"}},
+            {{name:"V2Box", color:"#F97316", action:"Tap to open", url:"v2box://install-sub?url=" + encodeURIComponent(subUrl), downloadUrl:"https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box"}},
+            {{name:"Happ", color:"#7C3AED", action:"Tap to open", url:"happ://add/" + encodeURIComponent(subUrl), downloadUrl:"https://play.google.com/store/apps/details?id=com.happproxy"}},
+            {{name:"NPV Tunnel", color:"#475569", action:"Tap to open", url:"npvtunnel://install-sub?url=" + encodeURIComponent(subUrl), downloadUrl:"https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv"}},
         ],
         iOS: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-            {{name:"Happ", color:"#7C3AED", action:"Tap to open", url:"happ://add/" + encodeURIComponent(subUrl)}},
-            {{name:"clash mi", color:"#DC2626", action:"Tap to open", url:"clash://install-config?url=" + encodeURIComponent(subUrl), fallbackUrl:"clashmeta://install-config?url=" + encodeURIComponent(subUrl)}},
+            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl, downloadUrl:"https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532"}},
+            {{name:"Happ", color:"#7C3AED", action:"Tap to open", url:"happ://add/" + encodeURIComponent(subUrl), downloadUrl:"https://apps.apple.com/us/app/happ-proxy-utility/id6504287215"}},
         ],
         Windows: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-            {{name:"v2rayN", color:"#16A34A", action:"Tap to copy link", url:null}},
-            {{name:"clash mi", color:"#DC2626", action:"Tap to open", url:"clash://install-config?url=" + encodeURIComponent(subUrl)}},
+            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl, downloadUrl:"https://github.com/hiddify/hiddify-app/releases"}},
+            {{name:"v2rayN", color:"#16A34A", action:"Tap to copy link", url:null, downloadUrl:"https://en.v2rayn.org/download/"}},
         ],
-
     }};
 
     let currentPlatform = null;
@@ -2580,12 +2584,17 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
         const apps = APPS[currentPlatform] || [];
         const container = document.getElementById('apps-container');
         container.innerHTML = apps.map(a => `
-            <div class="app-card" onclick="openApp('${{a.url || ''}}', '${{a.name}}', '${{a.fallbackUrl || ''}}')">
-                <img src="${{appIcon(a.name, a.color)}}" alt="app"
-                    onerror="this.onerror=null;this.src=appIconFallback('${{a.name}}','${{a.color}}')"
-                    style="width:36px;height:36px;border-radius:8px;margin-bottom:8px;display:block">
-                <div class="app-name">${{a.name}}</div>
-                <div class="app-action">${{a.action}}</div>
+            <div class="app-card">
+                <div class="app-card-head" onclick="openApp('${{a.url || ''}}', '${{a.name}}', '${{a.fallbackUrl || ''}}')">
+                    <img src="${{appIcon(a.name, a.color)}}" alt="app"
+                        onerror="this.onerror=null;this.src=appIconFallback('${{a.name}}','${{a.color}}')"
+                        style="width:36px;height:36px;border-radius:8px;display:block">
+                    <div class="app-name">${{a.name}}</div>
+                </div>
+                <div class="app-card-actions">
+                    ${{a.downloadUrl ? `<a class="app-btn app-btn-dl" href="${{a.downloadUrl}}" target="_blank" onclick="event.stopPropagation()">⬇️ دانلود</a>` : ''}}
+                    <button class="app-btn app-btn-connect" onclick="event.stopPropagation();openApp('${{a.url || ''}}', '${{a.name}}', '${{a.fallbackUrl || ''}}')">🔗 اتصال</button>
+                </div>
             </div>
         `).join('');
     }}
