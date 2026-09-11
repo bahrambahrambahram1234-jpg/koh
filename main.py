@@ -2515,7 +2515,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
         var n=window.innerWidth<600?70:130;
         var h='';
         for(var i=0;i<n;i++){{
-            var sz=(Math.random()*1.8+0.5).toFixed(2);
+            var sz=(Math.random()*2.5+1).toFixed(2);
             h+='<span class="s" style="width:'+sz+'px;height:'+sz+'px;top:'+(Math.random()*100).toFixed(2)+'%;left:'+(Math.random()*100).toFixed(2)+'%;animation-duration:'+(Math.random()*3+1.8).toFixed(2)+'s;animation-delay:'+(Math.random()*4).toFixed(2)+'s;opacity:'+(Math.random()*0.5+0.3).toFixed(2)+'"></span>';
         }}
         sf.innerHTML=h;
