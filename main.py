@@ -2662,8 +2662,8 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
     // استخراج پرچم از اسم کانفیگ (اگه داشته باشه)
     function extractFlag(label) {{
         if(!label) return null;
-        const m = label.match(/^([\u{{1F1E6}}-\u{{1F1FF}}]{{2}})/u);
-        return m ? m[1] : null;
+        const m = label.match(/^([\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF])/);
+        return m ? m[0] : null;
     }}
 
     function configBadge(cfg) {{
