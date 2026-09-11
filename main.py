@@ -1376,7 +1376,10 @@ async def handle_create_command(text: str):
             "created_at": datetime.now(timezone.utc).isoformat(),
             "active": True,
             "expires_at": expires_at,
-            "variants": default_variants(),
+            "variants": {
+                "vless": {"enabled": True, "transport": "ws", "fingerprint": "chrome", "alpn": "h3"},
+                "trojan": {"enabled": False, "transport": "ws", "fingerprint": "chrome", "alpn": "h3"},
+            },
             "port": DEFAULT_PORT,
         }
 
