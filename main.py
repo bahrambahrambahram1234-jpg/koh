@@ -2154,7 +2154,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
             --text:rgba(255,255,255,0.94);--text2:rgba(147,197,253,0.85);--text3:rgba(255,255,255,0.45);
             --green:#4ade80;--red:#f87171;--yellow:#fbbf24;
         }}
-        html,body{{height:100%;background:var(--bg);font-family:'Inter',sans-serif;color:var(--text)}}
+        html,body{{height:100%;background:var(--bg);font-family:'Vazirmatn','Inter',sans-serif;color:var(--text)}}
         body{{padding:0;display:flex;flex-direction:column;align-items:center;min-height:100vh;overflow-x:hidden}}
 
         /* Glass orbs background */
