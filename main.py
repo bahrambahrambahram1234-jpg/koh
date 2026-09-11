@@ -2469,11 +2469,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
         <div class="chip active" onclick="setPlatform('Android',this)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" style="vertical-align:-2px;margin-right:3px"><path d="M7.2 8h9.6a5 5 0 0 0-2-3.5l1-1.7a.35.35 0 0 0-.6-.35l-1.05 1.8A5.6 5.6 0 0 0 12 3.7c-.78 0-1.5.15-2.15.4L8.8 2.3a.35.35 0 0 0-.6.35l1 1.7A5 5 0 0 0 7.2 8zm2.55-1.6a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6zm4.5 0a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6zM6.5 9.2h11v8.3a1 1 0 0 1-1 1h-1.2v2.8a1.3 1.3 0 0 1-2.6 0v-2.8h-1.4v2.8a1.3 1.3 0 0 1-2.6 0v-2.8H7.5a1 1 0 0 1-1-1V9.2zM4 9.2a1.3 1.3 0 0 1 1.3 1.3v4.8a1.3 1.3 0 0 1-2.6 0v-4.8A1.3 1.3 0 0 1 4 9.2zm16 0a1.3 1.3 0 0 1 1.3 1.3v4.8a1.3 1.3 0 0 1-2.6 0v-4.8A1.3 1.3 0 0 1 20 9.2z"/></svg> Android</div>
         <div class="chip" onclick="setPlatform('iOS',this)"><svg width="12" height="15" viewBox="0 0 384 512" fill="currentColor" style="vertical-align:-2px;margin-right:3px"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> iOS</div>
         <div class="chip" onclick="setPlatform('Windows',this)"><svg width="14" height="14" viewBox="0 0 448 512" fill="currentColor" style="vertical-align:-2px;margin-right:3px"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg> Windows</div>
-        <div class="chip" onclick="setPlatform('macOS',this)"><svg width="12" height="15" viewBox="0 0 384 512" fill="currentColor" style="vertical-align:-2px;margin-right:3px"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> macOS</div>
-        <div class="chip" onclick="setPlatform('Linux',this)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" style="vertical-align:-2px;margin-right:3px"><path d="M12 2c-2.6 0-4.3 2.1-4.3 4.8v4.4c0 1.3-.7 2.4-1.7 3.6-1.2 1.5-2.3 2.9-2.3 4.3 0 1.1.9 1.8 2 1.5l2.8-.8c.5 1.1 2 1.9 3.5 1.9s3-.8 3.5-1.9l2.8.8c1.1.3 2-.4 2-1.5 0-1.4-1.1-2.8-2.3-4.3-1-1.2-1.7-2.3-1.7-3.6V6.8C16.3 4.1 14.6 2 12 2zm-1.7 4.6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zm3.4 0a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM12 8.9l1.6 1.1c.3.2.3.6 0 .8L12 11.9l-1.6-1.1c-.3-.2-.3-.6 0-.8L12 8.9z"/></svg> Linux</div>
-        <div class="chip" onclick="setPlatform('AndroidTV',this)"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-2px;margin-right:3px"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-5v1.6l2.5 1.4v1h-11v-1L9 18.6V17H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v9h16V6H4z"/></svg> Android TV</div>
-        <div class="chip" onclick="setPlatform('AppleTV',this)"><svg width="12" height="15" viewBox="0 0 384 512" fill="currentColor" style="vertical-align:-2px;margin-right:3px"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Apple TV</div>
-    </div>
+</div>
 
     <div id="apps-container" class="apps-grid"></div>
 
@@ -2558,20 +2554,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
             {{name:"v2rayN", color:"#16A34A", action:"Tap to copy link", url:null}},
             {{name:"clash mi", color:"#DC2626", action:"Tap to open", url:"clash://install-config?url=" + encodeURIComponent(subUrl)}},
         ],
-        macOS: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-        ],
-        Linux: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-            {{name:"clash mi", color:"#DC2626", action:"Tap to open", url:"clash://install-config?url=" + encodeURIComponent(subUrl)}},
-        ],
-        AndroidTV: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-            {{name:"V2Box", color:"#F97316", action:"Tap to open", url:"v2box://install-sub?url=" + encodeURIComponent(subUrl)}},
-        ],
-        AppleTV: [
-            {{name:"Hiddify", color:"#2F6FED", action:"Tap to open", url:hiddifyImportUrl}},
-        ],
+
     }};
 
     let currentPlatform = 'Android';
