@@ -3452,6 +3452,14 @@ body[dir="rtl"]{direction:rtl;text-align:right}
   background-image:linear-gradient(rgba(96,165,250,0.05) 1px,transparent 1px),
                    linear-gradient(90deg,rgba(96,165,250,0.05) 1px,transparent 1px);
   background-size:56px 56px}
+  .panel-stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.panel-stars .ps{position:absolute;border-radius:50%;background:#fff;
+  box-shadow:0 0 6px rgba(147,197,253,0.9),0 0 12px rgba(59,130,246,0.6);
+  animation:panelStarBlink 3s ease-in-out infinite}
+@keyframes panelStarBlink{
+  0%,100%{opacity:0.15;transform:scale(0.85)}
+  50%{opacity:0.9;transform:scale(1.15)}
+}
 .light-mode .grid-fixed{opacity:.25}
 
 /* Sidebar */
@@ -3812,6 +3820,7 @@ body[dir="rtl"]{direction:rtl;text-align:right}
 <body>
 <div class="bg-fixed"></div>
 <div class="grid-fixed"></div>
+<div class="panel-stars" id="panel-stars"></div>
 <div class="toast" id="toast"></div>
 
 <!-- LOGIN PAGE -->
@@ -5151,9 +5160,25 @@ async function importAddrs(source){
   c.innerHTML = html;
 })();
 
-setTheme(theme);
-setLang(lang);
-checkAuth();
+
+// Panel stars
+(function generatePanelStars(){
+  const c = document.getElementById('panel-stars');
+  if(!c) return;
+  const N = 35;
+  let html = '';
+  for(let i = 0; i < N; i++){
+    const size = (Math.random() * 2 + 1).toFixed(1);
+    const top = (Math.random() * 100).toFixed(2);
+    const left = (Math.random() * 100).toFixed(2);
+    const dur = (Math.random() * 3 + 2.5).toFixed(2);
+    const delay = (Math.random() * 5).toFixed(2);
+    html += `<span class="ps" style="width:${size}px;height:${size}px;top:${top}%;left:${left}%;animation-duration:${dur}s;animation-delay:${delay}s"></span>`;
+  }
+  c.innerHTML = html;
+})();
+
+
 setTheme(theme);
 setLang('fa');
 checkAuth();
