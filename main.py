@@ -2317,8 +2317,8 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
         .chip:hover,.chip.active{{background:var(--gold-dim);border-color:var(--border2);color:var(--gold)}}
 
         /* App cards */
-.apps-grid{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;animation:pgIn .3s ease}
-.apps-grid.show{display:grid}
+.apps-grid{{display:none;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;animation:pgIn .3s ease}}
+.apps-grid.show{{display:grid}}
         .app-card{{background:var(--surface2);border:1px solid var(--border);border-radius:14px;
             padding:14px;cursor:pointer;transition:all .2s;text-decoration:none;display:block}}
         .app-card:hover{{border-color:var(--border2);background:rgba(13,22,38,0.98);
