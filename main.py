@@ -2659,6 +2659,13 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
     }}
 
     // از خودِ رشته‌ی share-link (vless:// یا trojan://) نوع پروتکل/ترابرد/امنیت واقعی رو تشخیص می‌ده
+    // استخراج پرچم از اسم کانفیگ (اگه داشته باشه)
+    function extractFlag(label) {{
+        if(!label) return null;
+        const m = label.match(/^([\u{{1F1E6}}-\u{{1F1FF}}]{{2}})/u);
+        return m ? m[1] : null;
+    }}
+
     function configBadge(cfg) {{
         try {{
             const scheme = cfg.split('://')[0].toUpperCase();
@@ -2686,7 +2693,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
             const remark = parts[1] ? decodeURIComponent(parts[1]) : 'Config ' + (i+1);
             return `
                 <div class="config-item">
-                    <div class="config-icon">🌐</div>
+                    <div class="config-icon">${{extractFlag(remark) || '🌐'}}</div>
                     <div class="config-info">
                         <div class="config-name">${{remark}}</div>
                         <div class="config-type">${{configBadge(cfg)}}</div>
