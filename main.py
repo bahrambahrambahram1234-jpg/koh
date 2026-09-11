@@ -2142,7 +2142,7 @@ def generate_landing_page(link: dict, uid: str, addresses: list[str]) -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>エムエムディー - {link['label']}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *{{margin:0;padding:0;box-sizing:border-box}}
         :root{{
